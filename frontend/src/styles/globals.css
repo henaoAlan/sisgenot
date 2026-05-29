@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg: 248 250 252;
+  --panel: 255 255 255;
+  --text: 15 23 42;
+  --muted: 100 116 139;
+  --line: 226 232 240;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: 12 18 32;
+  --panel: 18 26 44;
+  --text: 226 232 240;
+  --muted: 148 163 184;
+  --line: 51 65 85;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: rgb(var(--bg));
+  color: rgb(var(--text));
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-lg border border-slate-200/80 bg-white shadow-soft dark:border-slate-700/80 dark:bg-slate-900;
+  }
+
+  .field {
+    @apply h-10 w-full rounded-md border border-slate-200 bg-white px-3 text-sm text-slate-900 outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100;
+  }
+
+  .label {
+    @apply text-sm font-medium text-slate-700 dark:text-slate-200;
+  }
+
+  /* Sidebar Tooltips */
+  .group .group-hover\:opacity-100 {
+    animation: slideInRight 0.2s ease-out;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-8px) translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(-50%);
+  }
+}
